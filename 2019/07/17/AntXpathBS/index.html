@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.ico">
+    
+
+    <title>
+        
+          belingud
+        
+    </title>
+
+    <!-- Spectre.css framework (v0.5.8) -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- Noto Sans TC -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC" rel="stylesheet">
+
+    <!-- theme css & js -->
+    <link rel="stylesheet" href="/css/spectre_custom.css">
+    <link rel="stylesheet" href="/css/book.css">
+    <script src="/js/book.js"></script>
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+</head>
+
+<body>
+
+<div class="container">
+  <div class="book-container">
+    <div class="columns">
+      <div class="column col-2 hide-lg">
+        <div class="book-sidebar">
+  <h4 class="site-meta">
+    <a href="/">belingud</a>
+  </h4>
+  <div class="sidebar-content">
+    
+  </div>
+</div>
+
+<script src="/js/book-sidebar.js"></script>
+      </div>
+
+      <div class="column col-8 col-lg-12">
+        <div class="book-content">
+          <div class="book-navbar">
+  <header class="navbar">
+  <section class="navbar-section">
+    <img class="navbar-icon" src="/favicon.ico">
+  </section>
+  <section class="navbar-center">
+    belingud
+  </section>
+  <section class="navbar-section">
+    <label class="accordion-header c-hand" for="accordion-sidebar">
+      <i class="icon icon-menu"></i>
+    </label>
+  </section>
+</header>
+
+<div class="accordion">
+  <input type="checkbox" id="accordion-sidebar" name="accordion-checkbox" hidden>
+  <div class="accordion-body">
+    
+  </div>
+</div>
+</div>
+
+<div class="book-post">
+  <h2 id="download-pic">Download Pic</h2>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> download all the picture from xiachufang</span><br><span class="line">curl https://xiachufang.com/|grep -oE 'https?://.+?\.(jpg,png)' xiachufang.html| cut -d '?' -f1|cut -d "@" -f1|xargs -i curl -O &#123;&#125;`</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> curl 大写`-O`表示自动命名</span><br><span class="line"><span class="meta">#</span> 在命令行里面写python代码</span><br><span class="line"></span><br><span class="line">|python -c "python_code"</span><br></pre></td></tr></table></figure>
+<h3 id="下载bilibili视频">下载bilibili视频</h3>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s 'https://api.bilibili.com/x/space/channel/video?mid=146668655&amp;cid=27588&amp;pn=1&amp;ps=30&amp;order=0&amp;jsonp=jsonp&amp;callback=__jp5' -H 'Referer: https://space.bilibili.com/146668655/channel/detail?cid=27588' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36' -H 'DNT: 1' --compressed| grep -oE '\&#123;.+\&#125;'|python -c "import json,sys; res = json.load(sys.stdin); [print('https://www.bilibili.com/video/av%s' % i['aid'] for i in res['data']['list']['archives'])]"|xaargs you-get &#123;&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="beautifulsoup">BeautifulSoup</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">html_doc = <span class="string">"""</span></span><br><span class="line"><span class="string">&lt;html&gt;&lt;head&gt;&lt;title&gt;The Dormouse's story&lt;/title&gt;&lt;/head&gt;</span></span><br><span class="line"><span class="string">&lt;body&gt;</span></span><br><span class="line"><span class="string">&lt;p class="title"&gt;&lt;b&gt;The Dormouse's story&lt;/b&gt;&lt;/p&gt;</span></span><br><span class="line"><span class="string">&lt;p class="story"&gt;Once upon a time there were three little sisters; and their names were</span></span><br><span class="line"><span class="string">&lt;a href="http://example.com/elsie" class="sister" id="link1"&gt;Elsie&lt;/a&gt;,</span></span><br><span class="line"><span class="string">&lt;a href="http://example.com/lacie" class="sister" id="link2"&gt;Lacie&lt;/a&gt; and</span></span><br><span class="line"><span class="string">&lt;a href="http://example.com/tillie" class="sister" id="link3"&gt;Tillie&lt;/a&gt;;</span></span><br><span class="line"><span class="string">and they lived at the bottom of a well.&lt;/p&gt;</span></span><br><span class="line"><span class="string">&lt;p class="story"&gt;...&lt;/p&gt;</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">soup = BeautifulSoup(html_doc)</span><br><span class="line"></span><br><span class="line">print(soup.prettify())</span><br><span class="line"></span><br><span class="line"><span class="comment">#几个简单的浏览结构化数据的方法:</span></span><br><span class="line">soup.title</span><br><span class="line"><span class="comment"># &lt;title&gt;The Dormouse's story&lt;/title&gt;</span></span><br><span class="line"></span><br><span class="line">soup.title.name</span><br><span class="line"><span class="comment"># u'title'</span></span><br><span class="line"></span><br><span class="line">soup.title.string</span><br><span class="line"><span class="comment"># u'The Dormouse's story'</span></span><br><span class="line"></span><br><span class="line">soup.title.parent.name</span><br><span class="line"><span class="comment"># u'head'</span></span><br><span class="line"></span><br><span class="line">soup.p</span><br><span class="line"><span class="comment"># &lt;p class="title"&gt;&lt;b&gt;The Dormouse's story&lt;/b&gt;&lt;/p&gt;</span></span><br><span class="line"></span><br><span class="line">soup.p[<span class="string">'class'</span>]</span><br><span class="line"><span class="comment"># u'title'</span></span><br><span class="line"></span><br><span class="line">soup.a</span><br><span class="line"><span class="comment"># &lt;a class="sister" href="http://example.com/elsie" id="link1"&gt;Elsie&lt;/a&gt;</span></span><br><span class="line"></span><br><span class="line">soup.find_all(<span class="string">'a'</span>)</span><br><span class="line"><span class="comment"># [&lt;a class="sister" href="http://example.com/elsie" id="link1"&gt;Elsie&lt;/a&gt;,</span></span><br><span class="line"><span class="comment">#  &lt;a class="sister" href="http://example.com/lacie" id="link2"&gt;Lacie&lt;/a&gt;,</span></span><br><span class="line"><span class="comment">#  &lt;a class="sister" href="http://example.com/tillie" id="link3"&gt;Tillie&lt;/a&gt;]</span></span><br><span class="line"></span><br><span class="line">soup.find(id=<span class="string">"link3"</span>)</span><br><span class="line"><span class="comment"># &lt;a class="sister" href="http://example.com/tillie" id="link3"&gt;Tillie&lt;/a&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 从文档中找到所有&lt;a&gt;标签的链接:</span></span><br><span class="line"><span class="keyword">for</span> link <span class="keyword">in</span> soup.find_all(<span class="string">'a'</span>):</span><br><span class="line">    print(link.get(<span class="string">'href'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从文档中获取所有文字内容:</span></span><br><span class="line">print(soup.get_text())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用lxml作为解析器</span></span><br><span class="line">soup_lxml = BeautifulSoup(html_doc, <span class="string">'lxml'</span>)</span><br><span class="line">print(soup_lxml.title)</span><br></pre></td></tr></table></figure>
+<h2 id="lxml">lxml</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line">selector = etree.HTML(html_doc)</span><br><span class="line">e = selector.cssselect(<span class="string">'p.title'</span>)[<span class="number">0</span>]  <span class="comment"># list type</span></span><br><span class="line">e.getchildren()[<span class="number">0</span>].text  <span class="comment"># list type</span></span><br><span class="line">selector.findall(<span class="string">'p'</span>)  <span class="comment"># empty list</span></span><br><span class="line">selector.findall(<span class="string">'body'</span>)  <span class="comment"># only get first level children</span></span><br></pre></td></tr></table></figure>
+<h2 id="xpath">Xpath</h2>
+<h3 id="概念">概念</h3>
+<ul>
+<li>
+<p>节点</p>
+<ul>
+<li>元素，比如a标签、body/title等标签</li>
+<li>属性，标签的属性，比如class，src, href</li>
+<li>文本，在标签以内的内容</li>
+<li>命名空间</li>
+<li>处理指令、内置函数</li>
+<li>文档根节点，以/来表示</li>
+</ul>
+</li>
+<li>
+<p>节点之间的关系</p>
+<ul>
+<li>父  …/</li>
+<li>子  ，body/div表示body下面的子节点div</li>
+<li>同胞   span/following-sibling::span 表示span相邻的一个span节点</li>
+<li>先辈/后代， body//a 表示body是a的先辈节点，a是body的后代节点。通常//开头，表示从根节点查找它的所有后代节点。</li>
+<li>./ 表示以当前节点为根节点，查找它的子节点</li>
+<li>.// 表示以当前节点为根节点，查找它的后代节点</li>
+<li>@href表示获取当前节点的href属性</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">s = etree.HTML(html_doc)</span><br><span class="line">s.xpath(<span class="string">'//bookstore'</span>)</span><br><span class="line">s.xpath(<span class="string">'//bookstore//title/@larg'</span>)</span><br><span class="line">s.xpath(<span class="string">'//bookstore//title/text()'</span>)</span><br><span class="line">s.xpath(<span class="string">'//bookstore/nook[1]'</span>)  <span class="comment"># count from 1</span></span><br><span class="line">s.xpath(<span class="string">'//bookstore/book[last()]'</span>)  <span class="comment"># get the last element</span></span><br><span class="line">s.xpath(<span class="string">'//bookstore/book/title[@lang="en"]'</span>)</span><br><span class="line">s.xpath(<span class="string">'//a/@href'</span>)  <span class="comment"># pick up all the link</span></span><br><span class="line"><span class="comment"># calculate in xpath</span></span><br><span class="line">s.xpath(<span class="string">'//book[price&gt;29]'</span>)</span><br></pre></td></tr></table></figure>
+<p>使用xpath查找子节点，父节点，后代，先辈，以及内容属性</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">r = requests.get(<span class="string">'http://www.hao123.com'</span>)</span><br><span class="line"><span class="comment"># create selector to contor content of the html request before</span></span><br><span class="line">selector = etree.HTML(r.text)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查找monkey="mingzhan-zfsitebar"的div的子节点a标签的href属性值</span></span><br><span class="line">dom.xpath(<span class="string">'//div[@monkey="mingzhan-zfsitebar"]/a/@href'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取出所有的a节点</span></span><br><span class="line"><span class="keyword">for</span> a <span class="keyword">in</span> dom.xpath(<span class="string">'//div[@monkey="mingzhan-zfsitebar"]/a'</span>):</span><br><span class="line">    print(a.xpath(<span class="string">'./text()'</span>)[<span class="number">0</span>], a.xpath(<span class="string">'./@href'</span>)[<span class="number">0</span>])</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 取第一个链接</span></span><br><span class="line">dom.xpath(<span class="string">'//div[@monkey="mingzhan-zfsitebar"]/a[1]/@href'</span>)</span><br><span class="line"><span class="comment"># 取最后一个链接</span></span><br><span class="line">dom.xpath(<span class="string">'//div[@monkey="mingzhan-zfsitebar"]/a[last()]/@href'</span>)</span><br><span class="line"><span class="comment"># 取前3个链接</span></span><br><span class="line">dom.xpath(<span class="string">'//div[@monkey="mingzhan-zfsitebar"]/a[position()&lt;4]/@href'</span>)</span><br></pre></td></tr></table></figure>
+
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+  </div>
+
+
+<script src="/js/book-post.js"></script>
+        </div>
+      </div>
+
+      <div class="column col-2 hide-lg">
+        <div class="book-toc">
+  <div class="book-tocbot">
+  </div>
+  <div class="book-tocbot-menu">
+    <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+    <a onclick="go_top()">Back to top</a>
+    <a onclick="go_bottom()">Go to bottom</a>
+  </div>
+</div>
+
+<script>
+tocbot.init({
+  tocSelector: '.book-tocbot',
+  contentSelector: '.book-post',
+  headingSelector: 'h1, h2, h3, h4, h5',
+  collapseDepth: 2,
+  orderedList: false,
+  scrollSmooth: false,
+});
+
+function expand_toc(){
+  var b = document.querySelector(".book-toc-expand");
+  tocbot.init({
+    tocSelector: '.book-tocbot',
+    contentSelector: '.book-post',
+    headingSelector: 'h1, h2, h3, h4, h5',
+    collapseDepth: 6,
+    orderedList: false,
+    scrollSmooth: false,
+  });
+  b.setAttribute("onclick", "collapse_toc()");
+  b.innerHTML = "Collapse all"
+}
+
+function collapse_toc(){
+  var b = document.querySelector(".book-toc-expand");
+  tocbot.init({
+    tocSelector: '.book-tocbot',
+    contentSelector: '.book-post',
+    headingSelector: 'h1, h2, h3, h4, h5',
+    collapseDepth: 2,
+    orderedList: false,
+    scrollSmooth: false,
+  });
+  b.setAttribute("onclick", "expand_toc()");
+  b.innerHTML = "Expand all"
+}
+
+function go_top() {
+  window.scrollTo(0, 0);
+}
+
+function go_bottom() {
+  window.scrollTo(0, document.body.scrollHeight);
+}
+
+</script>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

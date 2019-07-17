@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    
+      <link rel="icon" href="/favicon.ico">
+    
+
+    <title>
+        
+          belingud
+        
+    </title>
+
+    <!-- Spectre.css framework (v0.5.8) -->
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+    <!-- Noto Sans TC -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC" rel="stylesheet">
+
+    <!-- theme css & js -->
+    <link rel="stylesheet" href="/css/spectre_custom.css">
+    <link rel="stylesheet" href="/css/book.css">
+    <script src="/js/book.js"></script>
+
+    <!-- tocbot -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+    <!-- katex -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+
+    
+</head>
+
+<body>
+
+<div class="container">
+  <div class="book-container">
+    <div class="columns">
+      <div class="column col-2 hide-lg">
+        <div class="book-sidebar">
+  <h4 class="site-meta">
+    <a href="/">belingud</a>
+  </h4>
+  <div class="sidebar-content">
+    
+  </div>
+</div>
+
+<script src="/js/book-sidebar.js"></script>
+      </div>
+
+      <div class="column col-8 col-lg-12">
+        <div class="book-content">
+          <div class="book-navbar">
+  <header class="navbar">
+  <section class="navbar-section">
+    <img class="navbar-icon" src="/favicon.ico">
+  </section>
+  <section class="navbar-center">
+    belingud
+  </section>
+  <section class="navbar-section">
+    <label class="accordion-header c-hand" for="accordion-sidebar">
+      <i class="icon icon-menu"></i>
+    </label>
+  </section>
+</header>
+
+<div class="accordion">
+  <input type="checkbox" id="accordion-sidebar" name="accordion-checkbox" hidden>
+  <div class="accordion-body">
+    
+  </div>
+</div>
+</div>
+
+<div class="book-post">
+  <h1 id="状态码">状态码</h1>
+<h2 id="2">2*</h2>
+<ul>
+<li>200    ok  请求成功，一般用于GET，POST请求</li>
+<li>201    created    已创建</li>
+<li>202    accepted    已接受</li>
+<li>203    非授权信息。请求成功，但是meta信息不再原始服务器</li>
+</ul>
+<h2 id="3">3*</h2>
+<ul>
+<li>301    Moved Permanently    永久移动</li>
+<li>302    Found    临时移动</li>
+<li>303    SeeOther    查看其他地址，和301类似，GET重定向</li>
+<li>304    NotModified    未修改，使用缓存</li>
+</ul>
+<h2 id="4">4*</h2>
+<ul>
+<li>400    BadRequest    客户端错误，请求无法理解</li>
+<li>401    Unanthorized    未授权，要求身份认证</li>
+<li>403    Forbidden    服务器理解客户端请求，但是拒绝执行此请求</li>
+<li>404    NotFound    服务器无法根据客户端的请求找到资源</li>
+<li>405    Method Not Allowed    请求方法被拒绝</li>
+</ul>
+<h2 id="5">5*</h2>
+<ul>
+<li>500    Not Implemented    服务器内部错误无法完成请求</li>
+<li>502    Bad Gateway    网关错误</li>
+<li>503    Service Unavailable    服务器不可用</li>
+<li>504    Gateway Timeout    服务器超时</li>
+</ul>
+<h1 id="request">request</h1>
+<p>请求头信息，是一个文本信息，可以缺失任何字段</p>
+<ul>
+<li>HTTP/1.1 200 OK
+<ul>
+<li>HTTP协议版本，状态码</li>
+</ul>
+</li>
+<li>Connection: Keep-Alive
+<ul>
+<li>连接状态，keepalive表示长连接</li>
+</ul>
+</li>
+<li>Content-Encoding: gzip
+<ul>
+<li>文本传输编码格式，gzip是一种网络压缩格式</li>
+</ul>
+</li>
+<li>Date: Thu, 11 Aug 2016 15:23:13 GMT
+<ul>
+<li>日期</li>
+</ul>
+</li>
+<li>Kepp-Alive: timeout=5, max=1000
+<ul>
+<li>超时时间5秒，最长时间1000秒</li>
+</ul>
+</li>
+<li>Last-Modified: Mon, 25 Jul 2016 04:32:39 GMT
+<ul>
+<li>上次确认时间</li>
+</ul>
+</li>
+<li>Server: Apache
+<ul>
+<li>服务器代理软件</li>
+</ul>
+</li>
+</ul>
+<h1 id="curl">curl</h1>
+<p>根据参数可以实现非常多的网络请求方式</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-I</td>
+<td>只显示头信息</td>
+<td></td>
+</tr>
+<tr>
+<td>-X</td>
+<td>指定请求的方向</td>
+<td>以PUT方法请求URL<br>curl -X PUT <a href="http://httpbin.org/put" target="_blank" rel="noopener">http://httpbin.org/put</a></td>
+</tr>
+<tr>
+<td>-v</td>
+<td>显示连接的详细过程信息<br>包括请求头和响应头信息</td>
+<td>curl -vX <a href="https://cn.bing.com" target="_blank" rel="noopener">https://cn.bing.com</a></td>
+</tr>
+<tr>
+<td>-A</td>
+<td>伪装User-Agent信息</td>
+<td>curl -A Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A <a href="http://httpbin.org" target="_blank" rel="noopener">http://httpbin.org</a></td>
+</tr>
+<tr>
+<td>-H</td>
+<td>设置请求头信息</td>
+<td>curl -H “DNT:1” <a href="http://httpbin.org/headers" target="_blank" rel="noopener">http://httpbin.org/headers</a></td>
+</tr>
+<tr>
+<td>-o</td>
+<td>下载资源并保存到指定的文件</td>
+<td>curl -o baidu.jpg <a href="https://cambrian-images.cdn.bcebos.com/36773218021e19f7c5382481dd484853_1529466440372.jpeg" target="_blank" rel="noopener">https://cambrian-images.cdn.bcebos.com/36773218021e19f7c5382481dd484853_1529466440372.jpeg</a></td>
+</tr>
+<tr>
+<td>-d</td>
+<td>设置Post请求参数</td>
+<td>curl -X POST -d “a=1&amp;b=2” <a href="http://httpbin.org/post" target="_blank" rel="noopener">http://httpbin.org/post</a></td>
+</tr>
+</tbody>
+</table>
+<h1 id="practice">Practice</h1>
+<ol>
+<li>
+<p>使用curl 去模拟请求httpbin.org网站</p>
+<ul>
+<li>无参patch
+<ul>
+<li>发送一个patch请求     <code>curl -X PATCH &quot;http://httpbin.org/patch&quot; -H &quot;accept: application/json&quot;</code></li>
+</ul>
+</li>
+<li>Auth
+<ul>
+<li>基本验证账号密码    <code>curl -X GET &quot;http://httpbin.org/basic-auth/vic/qwe&quot; -H &quot;accept: acception/json&quot;</code></li>
+</ul>
+</li>
+<li>status
+<ul>
+<li>url中加入状态码201    <code>curl -X POST &quot;http://httpbin.org/status/201&quot; -H &quot;accept: text/plain&quot;</code></li>
+</ul>
+</li>
+<li>Request inspection
+<ul>
+<li>获取请求状态IP    <code>curl -X GET &quot;http://httpbin.org/ip&quot;</code></li>
+<li>response: <code>{ &quot;origin&quot;: &quot;114.242.26.65, 114.242.26.65&quot; }</code></li>
+</ul>
+</li>
+<li>Response inspection
+<ul>
+<li>设置缓存时间    <code>curl -X GET &quot;http://httpbin.org/cache/3000&quot; -H &quot;accept: application/json&quot;</code></li>
+</ul>
+</li>
+<li>Response formats
+<ul>
+<li>请求一个html的返回     <code>curl -X GET &quot;http://httpbin.org/html&quot; -H &quot;accept: text/html&quot;</code></li>
+</ul>
+</li>
+<li>Dynamic data
+<ul>
+<li>请求一个uuid4的json    <code>curl -X GET &quot;http://httpbin.org/uuid&quot; -H &quot;accept: application/json&quot;</code></li>
+</ul>
+</li>
+<li>Cookies
+<ul>
+<li>设置Cookie    <code>curl -X GET &quot;http://httpbin.org/cookies/set/vic/uuid4&quot; -H &quot;accept: text/plain&quot;</code></li>
+</ul>
+</li>
+<li>Image
+<ul>
+<li>获取一张jpeg格式的图片    <code>curl -X GET &quot;http://httpbin.org/image/jpeg&quot; -H &quot;accept: image/jpeg&quot;</code></li>
+</ul>
+</li>
+<li>Redirects
+<ul>
+<li>临时重定向至Bing    <code>curl -X GET &quot;http://httpbin.org/redirect-to?url=https%3A%2F%2Fcn.bing.com&amp;status_code=302&quot; -H &quot;accept: text/html&quot;</code></li>
+</ul>
+</li>
+<li>Anything
+<ul>
+<li>获取全部请求头    <code>http://httpbin.org/anything</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>使用wget去整站下载一个网站</p>
+<ul>
+<li><code>wget -a 3 -r -l 4 -p -k http:xiachufang.com</code></li>
+<li>-a  wait请求间隔时间</li>
+<li>-r  地柜下载，下载链接的层数</li>
+<li>-p  下载组成网页的图片等</li>
+<li>-k  下载完成后，将绝对链接转变成相对链接，实现本地访问</li>
+</ul>
+</li>
+<li>
+<p>使用requests库模拟请求，实现大小写不敏感字典</p>
+<ul>
+<li>practice_requests.py</li>
+</ul>
+</li>
+</ol>
+
+</div>
+
+
+  <div class="book-comments">
+    
+
+
+  </div>
+
+
+<script src="/js/book-post.js"></script>
+        </div>
+      </div>
+
+      <div class="column col-2 hide-lg">
+        <div class="book-toc">
+  <div class="book-tocbot">
+  </div>
+  <div class="book-tocbot-menu">
+    <a class="book-toc-expand" onclick="expand_toc()">Expand all</a>
+    <a onclick="go_top()">Back to top</a>
+    <a onclick="go_bottom()">Go to bottom</a>
+  </div>
+</div>
+
+<script>
+tocbot.init({
+  tocSelector: '.book-tocbot',
+  contentSelector: '.book-post',
+  headingSelector: 'h1, h2, h3, h4, h5',
+  collapseDepth: 2,
+  orderedList: false,
+  scrollSmooth: false,
+});
+
+function expand_toc(){
+  var b = document.querySelector(".book-toc-expand");
+  tocbot.init({
+    tocSelector: '.book-tocbot',
+    contentSelector: '.book-post',
+    headingSelector: 'h1, h2, h3, h4, h5',
+    collapseDepth: 6,
+    orderedList: false,
+    scrollSmooth: false,
+  });
+  b.setAttribute("onclick", "collapse_toc()");
+  b.innerHTML = "Collapse all"
+}
+
+function collapse_toc(){
+  var b = document.querySelector(".book-toc-expand");
+  tocbot.init({
+    tocSelector: '.book-tocbot',
+    contentSelector: '.book-post',
+    headingSelector: 'h1, h2, h3, h4, h5',
+    collapseDepth: 2,
+    orderedList: false,
+    scrollSmooth: false,
+  });
+  b.setAttribute("onclick", "expand_toc()");
+  b.innerHTML = "Expand all"
+}
+
+function go_top() {
+  window.scrollTo(0, 0);
+}
+
+function go_bottom() {
+  window.scrollTo(0, document.body.scrollHeight);
+}
+
+</script>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
