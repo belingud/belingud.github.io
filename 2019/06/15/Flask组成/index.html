@@ -102,6 +102,7 @@
 </ul>
 </li>
 </ol>
+<a id="more"></a>
 <h2 id="基本组成">基本组成</h2>
 <ol>
 <li>config配置项
@@ -204,7 +205,7 @@
 <h3 id="数据库的迁移">数据库的迁移</h3>
 <p>迁移是指将模型转变成数据库中的表，使用flask-migrate模块，可以结合flask-script使用，script模块可以给项目定制脚本，设定运行参数，代替在run里面的设置</p>
 <p>首先安装：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install flask-migrate</span><br><span class="line"><span class="meta">#</span><span class="bash"> 结合flask-script使用</span></span><br><span class="line">pip install flask-script</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install flask-migrate</span><br><span class="line"><span class="meta">#</span> 结合flask-script使用</span><br><span class="line">pip install flask-script</span><br></pre></td></tr></table></figure>
 <p>配置：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 绑定app和db</span></span><br><span class="line">migrate = Migrate(app, db)</span><br><span class="line"><span class="comment"># 给app添加迁移命令</span></span><br><span class="line">manager = Manager(app)</span><br><span class="line">manager.add_command(<span class="string">"db"</span>, MigrateCommand)</span><br></pre></td></tr></table></figure>
 <p>使用命令迁移数据库模型：</p>
