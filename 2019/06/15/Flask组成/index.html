@@ -1,88 +1,96 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="google-site-verification" content>
-  
-  <title>Flask组成</title>
-  <meta name="author" content="Victor">
-  <meta name="description" content="blooooooooog">
-  
-  
-  <meta property="og:title" content="Flask组成">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:site_name" content="belingud">
-  <link href="/apple-touch-icon-precomposed.png" sizes="180x180" rel="apple-touch-icon-precomposed">
-  <link rel="alternate" href="/atom.xml" title="belingud" type="application/atom+xml">
-  <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/m.min.css">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>belingud</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_859455_eaq7v6w8ktj.css">
 </head>
-</html>
 <body>
-  <a id="top"></a>
-  <div id="main">
-    <div class="behind">
-      <a href="/" class="back black-color">
-        <svg class="i-close" viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
-            <path d="M2 30 L30 2 M30 30 L2 2"></path>
-        </svg>
-      </a>
-      <div class="description">
-        &nbsp;life is beautiful
-      </div>
+<header class="header">
+    <div class="header-inner">
+        <div class="header-title">
+
+        </div>
+        <nav class="header-nav">
+            
+            <a href="/" class="header-nav-link" >
+                首页
+            </a>
+            
+
+            
+            <a href="/archives" class="header-nav-link">
+                归档
+            </a>
+            
+
+            
+            <a href="/tags" class="header-nav-link">
+                标签
+            </a>
+            
+
+            
+        </nav>
     </div>
-    <div class="main-ctnr">
-      
-
-  <article class="standard post">
-    <div class="title">
-      
-  
-    <h1 class="page-title center">
-        Flask组成
-    </h1>
-  
-
-
-    </div>
-    <div class="meta center">
-      
-<time datetime="2019-06-15T07:26:54.000Z">
-<svg class="i-calendar" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-    <path d="M2 6 L2 30 30 30 30 6 Z M2 15 L30 15 M7 3 L7 9 M13 3 L13 9 M19 3 L19 9 M25 3 L25 9"></path>
-  </svg>
-  &nbsp;
-  2019-06-15
-</time>
-
-
-
-
-
-
-    
-    &nbsp;
-    <svg class="i-tag" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-      <circle cx="24" cy="8" r="2"></circle>
-      <path d="M2 18 L18 2 30 2 30 14 14 30 Z"></path>
-    </svg>
-    &nbsp;
-    <a href="/tags/框架-Flask/">框架 Flask</a>
-
+</header>
+<header class="mobile-header">
+    <div class="mobile-nav">
+        <div class="mobile-nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-nav-title">
+            <a href="/" class="mobile-nav-title-link">Victor's Blog</a>
+        </div>
 
     </div>
-    <hr>
-    
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#flask四大内置对象"><span class="toc-text">Flask四大内置对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本组成"><span class="toc-text">基本组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#config配置项"><span class="toc-text">config配置项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#app"><span class="toc-text">app</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库"><span class="toc-text">数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#secret-key"><span class="toc-text">SECRET_KEY</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sqlalchemy"><span class="toc-text">SQLAlchemy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#跨域请求"><span class="toc-text">跨域请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flask中的csrf"><span class="toc-text">flask中的csrf</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模型"><span class="toc-text">模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#定义一个模型的类"><span class="toc-text">定义一个模型的类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#封装方法"><span class="toc-text">封装方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flask数据库操作"><span class="toc-text">Flask数据库操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字段类型和约束"><span class="toc-text">字段类型和约束</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库的迁移"><span class="toc-text">数据库的迁移</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#路由-接口"><span class="toc-text">路由（接口）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#路由操作数据库"><span class="toc-text">路由操作数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法"><span class="toc-text">方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#模板渲染"><span class="toc-text">模板渲染</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#设置cookie"><span class="toc-text">设置cookie</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#设置session"><span class="toc-text">设置session</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#从提交的数据中获取文件"><span class="toc-text">从提交的数据中获取文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#token"><span class="toc-text">token</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#g对象"><span class="toc-text">g对象</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#blueprint"><span class="toc-text">Blueprint</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#项目目录"><span class="toc-text">项目目录</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#init-初始化模块"><span class="toc-text">__init__初始化模块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#config或setting系统设置模块"><span class="toc-text">config或setting系统设置模块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#views试图函数模块"><span class="toc-text">views试图函数模块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#extension第三方库模块"><span class="toc-text">extension第三方库模块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#middleware中间件"><span class="toc-text">middleware中间件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#app目录结构"><span class="toc-text">App目录结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#models模型模块"><span class="toc-text">models模型模块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#views视图模块"><span class="toc-text">views视图模块</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#flask-restful"><span class="toc-text">flask-RESTful</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#models"><span class="toc-text">models</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#router"><span class="toc-text">router</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#views"><span class="toc-text">views</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#定义资源类"><span class="toc-text">定义资源类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#格式化数据"><span class="toc-text">格式化数据</span></a></li></ol></li></ol></li></ol>
-    
-    <div class="picture-container">
-      
+    <nav class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-home"></i>
+                <a href="/" class="mobile-nav-link">首页</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-archive"></i>
+                <a href="/archives" class="mobile-nav-link">归档</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-tag"></i>
+                <a href="/tags" class="mobile-nav-link">标签</a>
+            </li>
+            <li class="mobile-menu-item">
+                <i class="iconfont icon-about"></i>
+                <a href="/about/" class="mobile-nav-link">关于</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<div class="main">
+    <div class="content-inner">
+        <div class="posts">
+    <article class="post-whole">
+        <div class="post-title">
+            <h2 class="title">Flask组成</h2>
+            <div class="post-meta">
+                <span class="post-time">2019-06-15</span>
+                
+                <span class="post-visit"> 阅读次数：<span id="busuanzi_value_page_pv"></span></span>
+            </div>
+        </div>
+        <div class="post-toc" id="post-toc">
+    <strong class="post-toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#flask四大内置对象"><span class="toc-text">Flask四大内置对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本组成"><span class="toc-text">基本组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#config配置项"><span class="toc-text">config配置项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#app"><span class="toc-text">app</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库"><span class="toc-text">数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#secret-key"><span class="toc-text">SECRET_KEY</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sqlalchemy"><span class="toc-text">SQLAlchemy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#跨域请求"><span class="toc-text">跨域请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flask中的csrf"><span class="toc-text">flask中的csrf</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模型"><span class="toc-text">模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#定义一个模型的类"><span class="toc-text">定义一个模型的类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#封装方法"><span class="toc-text">封装方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flask数据库操作"><span class="toc-text">Flask数据库操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字段类型和约束"><span class="toc-text">字段类型和约束</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库的迁移"><span class="toc-text">数据库的迁移</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#路由-接口"><span class="toc-text">路由（接口）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#路由操作数据库"><span class="toc-text">路由操作数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法"><span class="toc-text">方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#模板渲染"><span class="toc-text">模板渲染</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#设置cookie"><span class="toc-text">设置cookie</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#设置session"><span class="toc-text">设置session</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#从提交的数据中获取文件"><span class="toc-text">从提交的数据中获取文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#token"><span class="toc-text">token</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#g对象"><span class="toc-text">g对象</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#blueprint"><span class="toc-text">Blueprint</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#项目目录"><span class="toc-text">项目目录</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#init-初始化模块"><span class="toc-text">__init__初始化模块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#config或setting系统设置模块"><span class="toc-text">config或setting系统设置模块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#views试图函数模块"><span class="toc-text">views试图函数模块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#extension第三方库模块"><span class="toc-text">extension第三方库模块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#middleware中间件"><span class="toc-text">middleware中间件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#app目录结构"><span class="toc-text">App目录结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#models模型模块"><span class="toc-text">models模型模块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#views视图模块"><span class="toc-text">views视图模块</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#flask-restful"><span class="toc-text">flask-RESTful</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#models"><span class="toc-text">models</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#router"><span class="toc-text">router</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#views"><span class="toc-text">views</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#定义资源类"><span class="toc-text">定义资源类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#格式化数据"><span class="toc-text">格式化数据</span></a></li></ol></li></ol></li></ol>
+    <div class="back-to-top" id="back-to-top">
+        <a href="javascript:void(0);">回到顶部</a>
     </div>
-    <h2 id="flask四大内置对象">Flask四大内置对象</h2>
+</div>
+        <div class="post-content">
+            <h2 id="flask四大内置对象">Flask四大内置对象</h2>
 <ol>
 <li>request</li>
 <li>session</li>
@@ -399,66 +407,66 @@
 <p>在资源类中装饰请求方法函数</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BlogResource</span><span class="params">(Resource)</span>:</span></span><br><span class="line"><span class="meta">    @login_required</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">post</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"ok"</span></span><br></pre></td></tr></table></figure>
 
-
-  </article>
-  </script>
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
-  </script>
-  <div class="busuanzi center">
-    页阅读量:&nbsp;<span id="busuanzi_value_page_pv"></span>&nbsp;・&nbsp;
-    站访问量:&nbsp;<span id="busuanzi_value_site_pv"></span>&nbsp;・&nbsp;
-    站访客数:&nbsp;<span id="busuanzi_value_site_uv"></span>
-  </div>
-
+        </div>
+        
+        <div class="post-tag">
+            
+            <a class="tag" href="/tags/框架-Flask/" title="框架 Flask">框架 Flask</a>
+            
+        </div>
+        
+    </article>
+</div>
+<div class="paginator">
+    
+        
+            <a class="prev" href="/2019/07/17/hello-world/">
+                <i class="iconfont icon-prev"></i>
+                <span class="nav-default">Hello World</span>
+                <span class="nav-mobile">上一篇</span>
+            </a>
+        
+        
+            <a class="next" href="/2019/06/10/在VScode上用代码撸UML图/">
+                <span class="nav-default">在VScode上用代码撸UML图</span>
+                <span class="nav-mobile">下一篇</span>
+                <i class="iconfont icon-next"></i>
+            </a>
+        
+    
+</div>
+<div id="comment-container"></div>
+    </div>
+</div>
+<footer class="footer-social">
+    
 
     
 
+    
 
-
-
+    <div class="footer-copyright">
+        <p class="time-line">
+            &copy;
+            
+            
+            2019
+            &nbsp;<i class="iconfont icon-heart"></i>&nbsp;
+            <a target="_blank" href="https://github.com/iJinxin">Victor</a>
+        </p>
+        <p class="theme-info">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme -
+            <a target="_blank" href="https://github.com/iJinxin/hexo-theme-sky">Sky</a>
+        </p>
     </div>
-  </div>
-  <footer class="page-footer"><div class="clearfix">
-</div>
-<div class="right-foot">
-    <div class="firstrow">
-        <a href="#top" target="_self">
-        <svg class="i-caret-right" viewBox="0 0 32 32" width="24" height="24" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
-            <path d="M10 30 L26 16 10 2 Z"></path>
-        </svg>
-        </a>
-        © Victor 2019.7.17
-    </div>
-    <div class="secondrow">
-        <a href="https://github.com/belingud">
-        belingud
-        </a>
-    </div>
-</div>
-<div class="clearfix">
-</div>
 </footer>
-  <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
-<script src="/js/search.min.js"></script>
-<script type="text/javascript">
-
-// disqus scripts
-
-
-// dropdown scripts
-$(".dropdown").click(function(event) {
-  var current = $(this);
-  event.stopPropagation();
-  $(current).children(".dropdown-content")[($(current).children(".dropdown-content").hasClass("open"))?'removeClass':'addClass']("open")
-});
-$(document).click(function(){
-    $(".dropdown-content").removeClass("open");
-})
-
-var path = "/search.xml";
-searchFunc(path, 'local-search-input', 'local-search-result');
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    
 
 </script>
-
-</body>
 </html>
