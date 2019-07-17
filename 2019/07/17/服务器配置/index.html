@@ -95,14 +95,14 @@
 <h3 id="配置">配置</h3>
 <p>安装完成后需要对redis进行配置，使其支持远程链接，或者将其加入到服务器族群中，配置文件在<code>/etc/redis/6379.conf</code>中，在命令模式下输入<code>/bind</code>，找到<code>bind 127.0.0.1</code>，将其注释掉。使服务器的redis服务支持远程链接。</p>
 <p>如果你的redis需要密码，在命令模式下输入<code>/requirepass foobared</code>，回车，按<kbd>N</kbd>键依次查找，找到</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> requirepass foobared</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> requirepass foobared</span></span><br></pre></td></tr></table></figure>
 <p>的一行，删除注释，将后面的foobared替换为你需要修改的密码，保存退出。</p>
 <p>重启redis服务<code>service redis-server restart</code></p>
 <h2 id="2-nginx">2. nginx</h2>
 <h3 id="1-安装">1. 安装</h3>
 <p>nginx官网：<a href="http://nginx.org/" target="_blank" rel="noopener">http://nginx.org/</a></p>
 <p>点击右侧<strong>documentation</strong>，是nginx的官方文档，找到第一项<strong>installing nginx</strong>，会列出安装方式，在Ubuntu中，可以找到<strong>Installation on Linux</strong>，点击<strong>packages</strong>，在列表里面找到Ubuntu，点击进入，Debin既是Ubuntu的类别，需要在命令行输入一下命令：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install curl gnupg2 ca-certificates lsb-release</span><br><span class="line">echo "deb http://nginx.org/packages/debian `lsb_release -cs` nginx" \</span><br><span class="line">    | sudo tee /etc/apt/sources.list.d/nginx.list</span><br><span class="line">curl -fsSL https://nginx.org/keys/nginx_signing.key | sudo apt-key add -</span><br><span class="line"><span class="meta">#</span> 检查证书</span><br><span class="line">sudo apt-key fingerprint ABF5BD827BD9BF62</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install nginx</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install curl gnupg2 ca-certificates lsb-release</span><br><span class="line">echo "deb http://nginx.org/packages/debian `lsb_release -cs` nginx" \</span><br><span class="line">    | sudo tee /etc/apt/sources.list.d/nginx.list</span><br><span class="line">curl -fsSL https://nginx.org/keys/nginx_signing.key | sudo apt-key add -</span><br><span class="line"><span class="meta">#</span><span class="bash"> 检查证书</span></span><br><span class="line">sudo apt-key fingerprint ABF5BD827BD9BF62</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install nginx</span><br></pre></td></tr></table></figure>
 <h3 id="2-配置文件">2. 配置文件</h3>
 <h4 id="创建">创建</h4>
 <h5 id="包含的配置项">包含的配置项</h5>
@@ -204,9 +204,9 @@
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
   </script>
   <div class="busuanzi center">
-    页阅读量:&nbsp;<span id="busuanzi_value_page_pv"></span>&nbsp;・&nbsp;
-    站访问量:&nbsp;<span id="busuanzi_value_site_pv"></span>&nbsp;・&nbsp;
-    站访客数:&nbsp;<span id="busuanzi_value_site_uv"></span>
+    page PV:&nbsp;<span id="busuanzi_value_page_pv"></span>&nbsp;・&nbsp;
+    site PV:&nbsp;<span id="busuanzi_value_site_pv"></span>&nbsp;・&nbsp;
+    site UV:&nbsp;<span id="busuanzi_value_site_uv"></span>
   </div>
 
 
