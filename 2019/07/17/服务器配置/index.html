@@ -1,0 +1,263 @@
+<!DOCTYPE HTML>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="google-site-verification" content>
+  
+  <title>服务器配置</title>
+  <meta name="author" content="Victor">
+  <meta name="description" content="blooooooooog">
+  
+  
+  <meta property="og:title" content="服务器配置">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:site_name" content="belingud">
+  <link href="/apple-touch-icon-precomposed.png" sizes="180x180" rel="apple-touch-icon-precomposed">
+  <link rel="alternate" href="/atom.xml" title="belingud" type="application/atom+xml">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/m.min.css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+</html>
+<body>
+  <a id="top"></a>
+  <div id="main">
+    <div class="behind">
+      <a href="/" class="back black-color">
+        <svg class="i-close" viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+            <path d="M2 30 L30 2 M30 30 L2 2"></path>
+        </svg>
+      </a>
+      <div class="description">
+        &nbsp;life is beautiful
+      </div>
+    </div>
+    <div class="main-ctnr">
+      
+
+  <article class="standard post">
+    <div class="title">
+      
+  
+    <h1 class="page-title center">
+        服务器配置
+    </h1>
+  
+
+
+    </div>
+    <div class="meta center">
+      
+<time datetime="2019-07-17T07:14:27.940Z">
+<svg class="i-calendar" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+    <path d="M2 6 L2 30 30 30 30 6 Z M2 15 L30 15 M7 3 L7 9 M13 3 L13 9 M19 3 L19 9 M25 3 L25 9"></path>
+  </svg>
+  &nbsp;
+  2019-07-17
+</time>
+
+
+
+
+
+
+    
+    &nbsp;
+    <svg class="i-tag" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+      <circle cx="24" cy="8" r="2"></circle>
+      <path d="M2 18 L18 2 30 2 30 14 14 30 Z"></path>
+    </svg>
+    &nbsp;
+    <a href="/tags/框架-后端-服务器/">框架 后端 服务器</a>
+
+
+    </div>
+    <hr>
+    
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#服务器配置"><span class="toc-text">服务器配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-redis"><span class="toc-text">1. redis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置"><span class="toc-text">配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-nginx"><span class="toc-text">2. nginx</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-安装"><span class="toc-text">1. 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-配置文件"><span class="toc-text">2. 配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#创建"><span class="toc-text">创建</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#包含的配置项"><span class="toc-text">包含的配置项</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#创建配置"><span class="toc-text">创建配置</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-启动nginx"><span class="toc-text">3. 启动nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-启动nginx-v2"><span class="toc-text">3. 启动nginx</span></a></li></ol></li></ol></li></ol>
+    
+    <div class="picture-container">
+      
+    </div>
+    <p>[TOC]</p>
+<h1 id="服务器配置">服务器配置</h1>
+<h2 id="1-redis">1. redis</h2>
+<h3 id="安装">安装</h3>
+<p>redis官网：<a href="https://redis.io/" target="_blank" rel="noopener">https://redis.io/</a></p>
+<p>点击上方的<strong>Download</strong>，在下方的下载按钮点击右键，复制下载链接。在命令行输入<code>wget 下载链接 保存目录</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://download.redis.io/releases/redis-5.0.5.tar.gz</span><br></pre></td></tr></table></figure>
+<p>下载一个后缀为.tar.gz的压缩包。进入到下载的目录中，命令行运行<code>tar xz redis-5.0.5.tar.gz</code>，完成解压，自动创建一个同名目录</p>
+<p>进入目录下：<code>cd redis-5.0.5.tar.gz</code>，运行<code>make</code>，完成后运行<code>make test</code>进行测试。</p>
+<p>进入安装文件的目录：<code>cd redis-5.0.5.tar.gz/utils</code>，运行安装脚本<code>./install_server.sh</code>，运行失败则使用bash命令运行<code>bash install_server.sh</code>，等待安装完成。</p>
+<h3 id="配置">配置</h3>
+<p>安装完成后需要对redis进行配置，使其支持远程链接，或者将其加入到服务器族群中，配置文件在<code>/etc/redis/6379.conf</code>中，在命令模式下输入<code>/bind</code>，找到<code>bind 127.0.0.1</code>，将其注释掉。使服务器的redis服务支持远程链接。</p>
+<p>如果你的redis需要密码，在命令模式下输入<code>/requirepass foobared</code>，回车，按<kbd>N</kbd>键依次查找，找到</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> requirepass foobared</span><br></pre></td></tr></table></figure>
+<p>的一行，删除注释，将后面的foobared替换为你需要修改的密码，保存退出。</p>
+<p>重启redis服务<code>service redis-server restart</code></p>
+<h2 id="2-nginx">2. nginx</h2>
+<h3 id="1-安装">1. 安装</h3>
+<p>nginx官网：<a href="http://nginx.org/" target="_blank" rel="noopener">http://nginx.org/</a></p>
+<p>点击右侧<strong>documentation</strong>，是nginx的官方文档，找到第一项<strong>installing nginx</strong>，会列出安装方式，在Ubuntu中，可以找到<strong>Installation on Linux</strong>，点击<strong>packages</strong>，在列表里面找到Ubuntu，点击进入，Debin既是Ubuntu的类别，需要在命令行输入一下命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install curl gnupg2 ca-certificates lsb-release</span><br><span class="line">echo "deb http://nginx.org/packages/debian `lsb_release -cs` nginx" \</span><br><span class="line">    | sudo tee /etc/apt/sources.list.d/nginx.list</span><br><span class="line">curl -fsSL https://nginx.org/keys/nginx_signing.key | sudo apt-key add -</span><br><span class="line"><span class="meta">#</span> 检查证书</span><br><span class="line">sudo apt-key fingerprint ABF5BD827BD9BF62</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install nginx</span><br></pre></td></tr></table></figure>
+<h3 id="2-配置文件">2. 配置文件</h3>
+<h4 id="创建">创建</h4>
+<h5 id="包含的配置项">包含的配置项</h5>
+<p>在需要的位置创建配置文件，文件名为<code>xxx.conf</code>，配置文件是一个json内容的文件，在nginx安装完成之后，在目录<code>/etc/nginx/conf.d/default.conf</code>里面有默认的配置项<strong>server</strong>，在目录<code>/etc/nginx/nginx.conf</code>里面有默认的其他配置项：</p>
+<ul>
+<li>user：worker进程运行的用户和组</li>
+<li>worker_process：子进程数，建议为核心数</li>
+<li>pid：进程id保存位置</li>
+<li>events：工作模式，连接配置
+<ul>
+<li>use：工作模式
+<ul>
+<li>epoll：高效工作模式Linux</li>
+<li>kqueue：高效工作模式bsd</li>
+<li>poll：标准模式</li>
+<li>select：标准模式</li>
+</ul>
+</li>
+<li>worker_connections：单进程最大连接数
+<ul>
+<li>正向代理：连接数×进程数</li>
+<li>反向代理：连接数×进程数/4</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>http：http配置
+<ul>
+<li>include mime.types：设置文件mime类型</li>
+<li>default_type：设置默认类型为二进制流，未见类型未知时使用默认</li>
+<li>access_log：链接日志</li>
+<li>sendfile：是否传输文件</li>
+<li>keepalive_timeout：活跃超时</li>
+<li>gzip：网络传输的压缩格式</li>
+</ul>
+</li>
+</ul>
+<p><strong>server</strong>主机的配置项：</p>
+<ul>
+<li>listen：端口号</li>
+<li>server_name localhost：制定ip或域名，多个域名用空格隔开</li>
+<li>location：url匹配
+<ul>
+<li>/</li>
+<li>/static</li>
+</ul>
+</li>
+<li>location
+<ul>
+<li>/50x.html</li>
+</ul>
+</li>
+<li>root：制定虚拟主机的根目录</li>
+<li>index：制定默认首页</li>
+</ul>
+<h5 id="创建配置">创建配置</h5>
+<p>将<code>/etc/nginx/nginx.conf</code>和<code>/etc/nginx/nginx.d/default.conf</code>，的内容复制到需要创建的文件中，建议使用项目名<code>ProjectName.conf</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">user  nginx;</span><br><span class="line">worker_processes  1;</span><br><span class="line"></span><br><span class="line">error_log  /var/log/nginx/error.log warn;</span><br><span class="line">pid        /var/run/nginx.pid;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       /etc/nginx/mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '</span><br><span class="line">                      '$status $body_bytes_sent "$http_referer" '</span><br><span class="line">                      '"$http_user_agent" "$http_x_forwarded_for"';</span><br><span class="line">    access_log  /var/log/nginx/access.log  main;</span><br><span class="line">    sendfile        on;</span><br><span class="line">    #tcp_nopush     on;</span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line">    #gzip  on;</span><br><span class="line">    server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  localhost;</span><br><span class="line">        # 配置访问根路由时的行为，链接到8000端口的django程序</span><br><span class="line">        location / &#123;</span><br><span class="line">            proxy_pass http://localhost:8000;</span><br><span class="line">        &#125;</span><br><span class="line">        # 配置静态文件目录</span><br><span class="line">        location /static &#123;</span><br><span class="line">            alias /var/www/public/static;</span><br><span class="line">        &#125;</span><br><span class="line">        error_page   500 502 503 504  /50x.html;</span><br><span class="line">        location = /50x.html &#123;</span><br><span class="line">            root   /usr/share/nginx/html;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>配置好访问根路由时的行为，链接到8000端口的Django程序，配置localtion是nginx的关键，包含了Django中接口的信息。</p>
+<p>location的语法：<code>location [modifier] url{...}</code></p>
+<p>modifer修饰符，分为以下几个：</p>
+<ul>
+<li>=	使用精确匹配并终止查询</li>
+<li>~    区分大写的正则表达式</li>
+<li>~*    不区分大小写的正则表达式</li>
+<li>^~    最佳匹配，不是正则匹配，通常用来匹配目录</li>
+</ul>
+<p>alias：别名，定义location的其他名字，如果location指定了正则表达式，alias将会引用正则表达式中的捕获，alias代替location中匹配的部分</p>
+<h3 id="3-启动nginx">3. 启动nginx</h3>
+<p>配置信息写好后，需要重启nginx服务，让其加载写好的配置文件</p>
+<p>nginx的常用命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nginx -s signal(信号)</span><br><span class="line">		stop 快速关闭</span><br><span class="line">		quit 优雅的关闭</span><br><span class="line">		reload 重新加载配置</span><br><span class="line">nginx -v 版本信息</span><br></pre></td></tr></table></figure>
+<p>nginx配置文件的使用：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nginx -t	#不运行，仅测试配置文件</span><br><span class="line">nginx -c configpath		#从指定路径加载配置文件启动</span><br><span class="line">nginx -t -c configpath	#测试指定配置文件</span><br></pre></td></tr></table></figure>
+<p>location的语法：<code>location [modifier] url{...}</code></p>
+<p>modifer修饰符，分为以下几个：</p>
+<ul>
+<li>=	使用精确匹配并终止查询</li>
+<li>~    区分大写的正则表达式</li>
+<li>~*    不区分大小写的正则表达式</li>
+<li>^~    最佳匹配，不是正则匹配，通常用来匹配目录</li>
+</ul>
+<p>alias：别名，定义location的其他名字，如果location指定了正则表达式，alias将会引用正则表达式中的捕获，alias代替location中匹配的部分</p>
+<h3 id="3-启动nginx-v2">3. 启动nginx</h3>
+<p>配置信息写好后，需要重启nginx服务，让其加载写好的配置文件</p>
+<p>nginx的常用命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nginx -s signal(信号)</span><br><span class="line">		stop 快速关闭</span><br><span class="line">		quit 优雅的关闭</span><br><span class="line">		reload 重新加载配置</span><br><span class="line">nginx -v 版本信息</span><br></pre></td></tr></table></figure>
+<p>nginx配置文件的使用：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nginx -t	#不运行，仅测试配置文件</span><br><span class="line">nginx -c configpath		#从指定路径加载配置文件启动</span><br><span class="line">nginx -t -c configpath	#测试指定配置文件</span><br></pre></td></tr></table></figure>
+<hr>
+<br>
+<br>
+<br>
+<p>uwsgi的配置可以参考无天法师的博客：<a href="https://www.imooc.com/article/21751" target="_blank" rel="noopener">https://www.imooc.com/article/21751</a></p>
+
+
+  </article>
+  </script>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+  <div class="busuanzi center">
+    page PV:&nbsp;<span id="busuanzi_value_page_pv"></span>&nbsp;・&nbsp;
+    site PV:&nbsp;<span id="busuanzi_value_site_pv"></span>&nbsp;・&nbsp;
+    site UV:&nbsp;<span id="busuanzi_value_site_uv"></span>
+  </div>
+
+
+    
+
+
+
+
+    </div>
+  </div>
+  <footer class="page-footer"><div class="clearfix">
+</div>
+<div class="right-foot">
+    <div class="firstrow">
+        <a href="#top" target="_self">
+        <svg class="i-caret-right" viewBox="0 0 32 32" width="24" height="24" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+            <path d="M10 30 L26 16 10 2 Z"></path>
+        </svg>
+        </a>
+        © Victor 2019.7.17
+    </div>
+    <div class="secondrow">
+        <a href="https://github.com/belingud">
+        belingud
+        </a>
+    </div>
+</div>
+<div class="clearfix">
+</div>
+</footer>
+  <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+<script src="/js/search.min.js"></script>
+<script type="text/javascript">
+
+// disqus scripts
+
+
+// dropdown scripts
+$(".dropdown").click(function(event) {
+  var current = $(this);
+  event.stopPropagation();
+  $(current).children(".dropdown-content")[($(current).children(".dropdown-content").hasClass("open"))?'removeClass':'addClass']("open")
+});
+$(document).click(function(){
+    $(".dropdown-content").removeClass("open");
+})
+
+var path = "/search.xml";
+searchFunc(path, 'local-search-input', 'local-search-result');
+
+</script>
+
+</body>
+</html>
