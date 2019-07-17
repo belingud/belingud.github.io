@@ -895,174 +895,12 @@
 <li>503    Service Unavailable    服务器不可用</li>
 <li>504    Gateway Timeout    服务器超时</li>
 </ul>
-<h1 id="request">request</h1>
-<p>请求头信息，是一个文本信息，可以缺失任何字段</p>
-<ul>
-<li>HTTP/1.1 200 OK
-<ul>
-<li>HTTP协议版本，状态码</li>
-</ul>
-</li>
-<li>Connection: Keep-Alive
-<ul>
-<li>连接状态，keepalive表示长连接</li>
-</ul>
-</li>
-<li>Content-Encoding: gzip
-<ul>
-<li>文本传输编码格式，gzip是一种网络压缩格式</li>
-</ul>
-</li>
-<li>Date: Thu, 11 Aug 2016 15:23:13 GMT
-<ul>
-<li>日期</li>
-</ul>
-</li>
-<li>Kepp-Alive: timeout=5, max=1000
-<ul>
-<li>超时时间5秒，最长时间1000秒</li>
-</ul>
-</li>
-<li>Last-Modified: Mon, 25 Jul 2016 04:32:39 GMT
-<ul>
-<li>上次确认时间</li>
-</ul>
-</li>
-<li>Server: Apache
-<ul>
-<li>服务器代理软件</li>
-</ul>
-</li>
-</ul>
-<h1 id="curl">curl</h1>
-<p>根据参数可以实现非常多的网络请求方式</p>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>说明</th>
-<th>示例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>-I</td>
-<td>只显示头信息</td>
-<td></td>
-</tr>
-<tr>
-<td>-X</td>
-<td>指定请求的方向</td>
-<td>以PUT方法请求URL<br>curl -X PUT <a href="http://httpbin.org/put" target="_blank" rel="noopener">http://httpbin.org/put</a></td>
-</tr>
-<tr>
-<td>-v</td>
-<td>显示连接的详细过程信息<br>包括请求头和响应头信息</td>
-<td>curl -vX <a href="https://cn.bing.com" target="_blank" rel="noopener">https://cn.bing.com</a></td>
-</tr>
-<tr>
-<td>-A</td>
-<td>伪装User-Agent信息</td>
-<td>curl -A Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.75.14 (KHTML, like Gecko) Version/7.0.3 Safari/7046A194A <a href="http://httpbin.org" target="_blank" rel="noopener">http://httpbin.org</a></td>
-</tr>
-<tr>
-<td>-H</td>
-<td>设置请求头信息</td>
-<td>curl -H “DNT:1” <a href="http://httpbin.org/headers" target="_blank" rel="noopener">http://httpbin.org/headers</a></td>
-</tr>
-<tr>
-<td>-o</td>
-<td>下载资源并保存到指定的文件</td>
-<td>curl -o baidu.jpg <a href="https://cambrian-images.cdn.bcebos.com/36773218021e19f7c5382481dd484853_1529466440372.jpeg" target="_blank" rel="noopener">https://cambrian-images.cdn.bcebos.com/36773218021e19f7c5382481dd484853_1529466440372.jpeg</a></td>
-</tr>
-<tr>
-<td>-d</td>
-<td>设置Post请求参数</td>
-<td>curl -X POST -d “a=1&amp;b=2” <a href="http://httpbin.org/post" target="_blank" rel="noopener">http://httpbin.org/post</a></td>
-</tr>
-</tbody>
-</table>
-<h1 id="practice">Practice</h1>
-<ol>
-<li>
-<p>使用curl 去模拟请求httpbin.org网站</p>
-<ul>
-<li>无参patch
-<ul>
-<li>发送一个patch请求     <code>curl -X PATCH &quot;http://httpbin.org/patch&quot; -H &quot;accept: application/json&quot;</code></li>
-</ul>
-</li>
-<li>Auth
-<ul>
-<li>基本验证账号密码    <code>curl -X GET &quot;http://httpbin.org/basic-auth/vic/qwe&quot; -H &quot;accept: acception/json&quot;</code></li>
-</ul>
-</li>
-<li>status
-<ul>
-<li>url中加入状态码201    <code>curl -X POST &quot;http://httpbin.org/status/201&quot; -H &quot;accept: text/plain&quot;</code></li>
-</ul>
-</li>
-<li>Request inspection
-<ul>
-<li>获取请求状态IP    <code>curl -X GET &quot;http://httpbin.org/ip&quot;</code></li>
-<li>response: <code>{ &quot;origin&quot;: &quot;114.242.26.65, 114.242.26.65&quot; }</code></li>
-</ul>
-</li>
-<li>Response inspection
-<ul>
-<li>设置缓存时间    <code>curl -X GET &quot;http://httpbin.org/cache/3000&quot; -H &quot;accept: application/json&quot;</code></li>
-</ul>
-</li>
-<li>Response formats
-<ul>
-<li>请求一个html的返回     <code>curl -X GET &quot;http://httpbin.org/html&quot; -H &quot;accept: text/html&quot;</code></li>
-</ul>
-</li>
-<li>Dynamic data
-<ul>
-<li>请求一个uuid4的json    <code>curl -X GET &quot;http://httpbin.org/uuid&quot; -H &quot;accept: application/json&quot;</code></li>
-</ul>
-</li>
-<li>Cookies
-<ul>
-<li>设置Cookie    <code>curl -X GET &quot;http://httpbin.org/cookies/set/vic/uuid4&quot; -H &quot;accept: text/plain&quot;</code></li>
-</ul>
-</li>
-<li>Image
-<ul>
-<li>获取一张jpeg格式的图片    <code>curl -X GET &quot;http://httpbin.org/image/jpeg&quot; -H &quot;accept: image/jpeg&quot;</code></li>
-</ul>
-</li>
-<li>Redirects
-<ul>
-<li>临时重定向至Bing    <code>curl -X GET &quot;http://httpbin.org/redirect-to?url=https%3A%2F%2Fcn.bing.com&amp;status_code=302&quot; -H &quot;accept: text/html&quot;</code></li>
-</ul>
-</li>
-<li>Anything
-<ul>
-<li>获取全部请求头    <code>http://httpbin.org/anything</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p>使用wget去整站下载一个网站</p>
-<ul>
-<li><code>wget -a 3 -r -l 4 -p -k http:xiachufang.com</code></li>
-<li>-a  wait请求间隔时间</li>
-<li>-r  地柜下载，下载链接的层数</li>
-<li>-p  下载组成网页的图片等</li>
-<li>-k  下载完成后，将绝对链接转变成相对链接，实现本地访问</li>
-</ul>
-</li>
-<li>
-<p>使用requests库模拟请求，实现大小写不敏感字典</p>
-<ul>
-<li>practice_requests.py</li>
-</ul>
-</li>
-</ol>
-
+                    <div class="read-more">
+                        <a href="/2019/07/17/AntConcept/" class="read-more-link">
+                            阅读全文
+                            <i class="iconfont icon-readmore"></i>
+                        </a>
+                    </div>
                 
             </div>
         </article>
@@ -1080,98 +918,12 @@
                     <h1 id="scrapy">Scrapy</h1>
 <h2 id="getting-start">Getting start</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># create a new project named tutorial</span></span><br><span class="line">scrapy startproject tutorial</span><br><span class="line"><span class="comment"># get in the root direction of your project</span></span><br><span class="line"><span class="built_in">cd</span> tutorial</span><br><span class="line"><span class="comment"># create a custom spider</span></span><br><span class="line">scrapy genspider quotes quotes.toscrape.com</span><br><span class="line"><span class="comment"># scrapy genspider custom spider-name target domain</span></span><br></pre></td></tr></table></figure>
-<h2 id="structure">Structure</h2>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">├── scrapy.cfg 整个项目的配置文件，一个项目只有一个，存放在根目录下</span><br><span class="line">└── tutorial  项目的Python文件所在的包</span><br><span class="line">    ├── __init__.py</span><br><span class="line">    ├── items.py  Item对象定义</span><br><span class="line">    ├── middlewares.py  中间件</span><br><span class="line">    ├── pipelines.py  存储item对象的逻辑</span><br><span class="line">    ├── settings.py  配置爬虫的逻辑</span><br><span class="line">    └── spiders  通过genspider命令生成的spider文件存放在这里</span><br><span class="line">        ├── __init__.py</span><br><span class="line">        └── quotes.py  spider文件，名字和我们genspider命令里指定的一样</span><br><span class="line"></span><br><span class="line">注意：我们所有执行的命令都是在项目根目录下去执行</span><br></pre></td></tr></table></figure>
-<h3 id="start-spider">Start spider</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># scrapy crawl CustomSpiderName</span></span><br><span class="line">scrapy crawl quotes</span><br></pre></td></tr></table></figure>
-<h2 id="robots-txt">robots.txt</h2>
-<p>定义了爬虫的规则，通常放在网站的根目录下。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Disallow:  /product/ 不允许爬取/product下的所有页面</span><br><span class="line">allow:  /product/ 允许爬取</span><br></pre></td></tr></table></figure>
-<h2 id="scrapy-shell">Scrapy shell</h2>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 后面的URL可以传也可以不传</span></span><br><span class="line">scrapy shell <span class="string">'http://quotes.toscrape.com/page/1/'</span></span><br></pre></td></tr></table></figure>
-<p>进入控制台以后，以下变量默认帮我们设置好了，无需要再import 或者初始化：</p>
-<p>[s]   scrapy    scrapy模块<br>
-[s]   crawler    Crawler对象<br>
-[s]   item       爬取指定页面取获取的item对象，如果你传了url并且parse函数有返回item对象<br>
-[s]   request    url的Request对象<br>
-[s]   response   请求该url所返回的Response对象<br>
-[s]   settings   Settings对象，保存了我们项目所有的配置，包括settings.py里面所设置的内容。用来检测我们的配置是否生效<br>
-[s]   spider     Spider类的对象<br>
-[s] Useful shortcuts:<br>
-[s]   fetch(url[, redirect=True])    抓取给定的url参数，并更新本地的request和response对象，默认跟随重定向跳转。<br>
-[s]   fetch(req)                 抓取一个Request对象，并更新局部变量（request/response/item）<br>
-[s]   shelp()          显示shell内的帮助，显示所有内置变量<br>
-[s]   view(response)    在浏览器中查看response结果</p>
-<h2 id="downloadermiddleware">DownloaderMiddleware</h2>
-<p>process_xxx函数的返回值：</p>
-<table>
-<thead>
-<tr>
-<th>函数</th>
-<th>返回值</th>
-<th>行为</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>process_request</td>
-<td>None</td>
-<td>normal</td>
-</tr>
-<tr>
-<td></td>
-<td>Response</td>
-<td>停止后面的中间件process_request函数调用，<br>并直接返回Response对象给中间件链的process_response函数</td>
-</tr>
-<tr>
-<td></td>
-<td>Request</td>
-<td>停止中间件链的调用，<br>安排该Request对象重新下载</td>
-</tr>
-<tr>
-<td></td>
-<td>Exception</td>
-<td>调用process_exception函数</td>
-</tr>
-<tr>
-<td>process_response</td>
-<td>Response</td>
-<td>normal</td>
-</tr>
-<tr>
-<td></td>
-<td>Request</td>
-<td>停止中间件链的调用，<br>安排该Request对象重新下载</td>
-</tr>
-<tr>
-<td></td>
-<td>Exception</td>
-<td>调用process_exception函数</td>
-</tr>
-<tr>
-<td>process_exception</td>
-<td>None</td>
-<td>normal</td>
-</tr>
-<tr>
-<td></td>
-<td>Response</td>
-<td>停止后面的中间件process_exception函数调用，<br>并直接返回Response对象给中间件链的process_response函数</td>
-</tr>
-<tr>
-<td></td>
-<td>Request</td>
-<td>停止中间件链的调用，<br>安排该Request对象重新下载</td>
-</tr>
-</tbody>
-</table>
-<h3 id="spidermiddleware">SpiderMiddleware</h3>
-<p>一般用于处理request，记录爬取的内容</p>
-<p>监控redis</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 进入redis</span></span><br><span class="line">redis-cli</span><br><span class="line"><span class="meta">#</span><span class="bash"> 监控redis</span></span><br><span class="line">monitor</span><br></pre></td></tr></table></figure>
-<p>清除redis所有数据</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flushdb</span><br></pre></td></tr></table></figure>
-
+                    <div class="read-more">
+                        <a href="/2019/07/17/AntScrapy/" class="read-more-link">
+                            阅读全文
+                            <i class="iconfont icon-readmore"></i>
+                        </a>
+                    </div>
                 
             </div>
         </article>
@@ -1188,44 +940,12 @@
                 
                     <h2 id="download-pic">Download Pic</h2>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> download all the picture from xiachufang</span></span><br><span class="line">curl https://xiachufang.com/|grep -oE 'https?://.+?\.(jpg,png)' xiachufang.html| cut -d '?' -f1|cut -d "@" -f1|xargs -i curl -O &#123;&#125;`</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> curl 大写`-O`表示自动命名</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 在命令行里面写python代码</span></span><br><span class="line"></span><br><span class="line">|python -c "python_code"</span><br></pre></td></tr></table></figure>
-<h3 id="下载bilibili视频">下载bilibili视频</h3>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s 'https://api.bilibili.com/x/space/channel/video?mid=146668655&amp;cid=27588&amp;pn=1&amp;ps=30&amp;order=0&amp;jsonp=jsonp&amp;callback=__jp5' -H 'Referer: https://space.bilibili.com/146668655/channel/detail?cid=27588' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36' -H 'DNT: 1' --compressed| grep -oE '\&#123;.+\&#125;'|python -c "import json,sys; res = json.load(sys.stdin); [print('https://www.bilibili.com/video/av%s' % i['aid'] for i in res['data']['list']['archives'])]"|xaargs you-get &#123;&#125;</span><br></pre></td></tr></table></figure>
-<p>beautifulsoup的使用较少，更喜欢用lxml，使用xpath、css选择器来查找元素，beautifulsoup作简单介绍。</p>
-<h2 id="beautifulsoup">BeautifulSoup</h2>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">html_doc = <span class="string">"""</span></span><br><span class="line"><span class="string">&lt;html&gt;&lt;head&gt;&lt;title&gt;The Dormouse's story&lt;/title&gt;&lt;/head&gt;</span></span><br><span class="line"><span class="string">&lt;body&gt;</span></span><br><span class="line"><span class="string">&lt;p class="title"&gt;&lt;b&gt;The Dormouse's story&lt;/b&gt;&lt;/p&gt;</span></span><br><span class="line"><span class="string">&lt;p class="story"&gt;Once upon a time there were three little sisters; and their names were</span></span><br><span class="line"><span class="string">&lt;a href="http://example.com/elsie" class="sister" id="link1"&gt;Elsie&lt;/a&gt;,</span></span><br><span class="line"><span class="string">&lt;a href="http://example.com/lacie" class="sister" id="link2"&gt;Lacie&lt;/a&gt; and</span></span><br><span class="line"><span class="string">&lt;a href="http://example.com/tillie" class="sister" id="link3"&gt;Tillie&lt;/a&gt;;</span></span><br><span class="line"><span class="string">and they lived at the bottom of a well.&lt;/p&gt;</span></span><br><span class="line"><span class="string">&lt;p class="story"&gt;...&lt;/p&gt;</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">soup = BeautifulSoup(html_doc)</span><br><span class="line"></span><br><span class="line">print(soup.prettify())</span><br><span class="line"></span><br><span class="line"><span class="comment">#几个简单的浏览结构化数据的方法:</span></span><br><span class="line">soup.title</span><br><span class="line"><span class="comment"># &lt;title&gt;The Dormouse's story&lt;/title&gt;</span></span><br><span class="line"></span><br><span class="line">soup.title.name</span><br><span class="line"><span class="comment"># u'title'</span></span><br><span class="line"></span><br><span class="line">soup.title.string</span><br><span class="line"><span class="comment"># u'The Dormouse's story'</span></span><br><span class="line"></span><br><span class="line">soup.title.parent.name</span><br><span class="line"><span class="comment"># u'head'</span></span><br><span class="line"></span><br><span class="line">soup.p</span><br><span class="line"><span class="comment"># &lt;p class="title"&gt;&lt;b&gt;The Dormouse's story&lt;/b&gt;&lt;/p&gt;</span></span><br><span class="line"></span><br><span class="line">soup.p[<span class="string">'class'</span>]</span><br><span class="line"><span class="comment"># u'title'</span></span><br><span class="line"></span><br><span class="line">soup.a</span><br><span class="line"><span class="comment"># &lt;a class="sister" href="http://example.com/elsie" id="link1"&gt;Elsie&lt;/a&gt;</span></span><br><span class="line"></span><br><span class="line">soup.find_all(<span class="string">'a'</span>)</span><br><span class="line"><span class="comment"># [&lt;a class="sister" href="http://example.com/elsie" id="link1"&gt;Elsie&lt;/a&gt;,</span></span><br><span class="line"><span class="comment">#  &lt;a class="sister" href="http://example.com/lacie" id="link2"&gt;Lacie&lt;/a&gt;,</span></span><br><span class="line"><span class="comment">#  &lt;a class="sister" href="http://example.com/tillie" id="link3"&gt;Tillie&lt;/a&gt;]</span></span><br><span class="line"></span><br><span class="line">soup.find(id=<span class="string">"link3"</span>)</span><br><span class="line"><span class="comment"># &lt;a class="sister" href="http://example.com/tillie" id="link3"&gt;Tillie&lt;/a&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 从文档中找到所有&lt;a&gt;标签的链接:</span></span><br><span class="line"><span class="keyword">for</span> link <span class="keyword">in</span> soup.find_all(<span class="string">'a'</span>):</span><br><span class="line">    print(link.get(<span class="string">'href'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从文档中获取所有文字内容:</span></span><br><span class="line">print(soup.get_text())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用lxml作为解析器</span></span><br><span class="line">soup_lxml = BeautifulSoup(html_doc, <span class="string">'lxml'</span>)</span><br><span class="line">print(soup_lxml.title)</span><br></pre></td></tr></table></figure>
-<h2 id="lxml">lxml</h2>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line">selector = etree.HTML(html_doc)</span><br><span class="line">e = selector.cssselect(<span class="string">'p.title'</span>)[<span class="number">0</span>]  <span class="comment"># list type</span></span><br><span class="line">e.getchildren()[<span class="number">0</span>].text  <span class="comment"># list type</span></span><br><span class="line">selector.findall(<span class="string">'p'</span>)  <span class="comment"># empty list</span></span><br><span class="line">selector.findall(<span class="string">'body'</span>)  <span class="comment"># only get first level children</span></span><br></pre></td></tr></table></figure>
-<h2 id="xpath">Xpath</h2>
-<h3 id="概念">概念</h3>
-<ul>
-<li>
-<p>节点</p>
-<ul>
-<li>元素，比如a标签、body/title等标签</li>
-<li>属性，标签的属性，比如class，src, href</li>
-<li>文本，在标签以内的内容</li>
-<li>命名空间</li>
-<li>处理指令、内置函数</li>
-<li>文档根节点，以/来表示</li>
-</ul>
-</li>
-<li>
-<p>节点之间的关系</p>
-<ul>
-<li>父  …/</li>
-<li>子  ，body/div表示body下面的子节点div</li>
-<li>同胞   span/following-sibling::span 表示span相邻的一个span节点</li>
-<li>先辈/后代， body//a 表示body是a的先辈节点，a是body的后代节点。通常//开头，表示从根节点查找它的所有后代节点。</li>
-<li>./ 表示以当前节点为根节点，查找它的子节点</li>
-<li>.// 表示以当前节点为根节点，查找它的后代节点</li>
-<li>@href表示获取当前节点的href属性</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">s = etree.HTML(html_doc)</span><br><span class="line">s.xpath(<span class="string">'//bookstore'</span>)</span><br><span class="line">s.xpath(<span class="string">'//bookstore//title/@larg'</span>)</span><br><span class="line">s.xpath(<span class="string">'//bookstore//title/text()'</span>)</span><br><span class="line">s.xpath(<span class="string">'//bookstore/nook[1]'</span>)  <span class="comment"># count from 1</span></span><br><span class="line">s.xpath(<span class="string">'//bookstore/book[last()]'</span>)  <span class="comment"># get the last element</span></span><br><span class="line">s.xpath(<span class="string">'//bookstore/book/title[@lang="en"]'</span>)</span><br><span class="line">s.xpath(<span class="string">'//a/@href'</span>)  <span class="comment"># pick up all the link</span></span><br><span class="line"><span class="comment"># calculate in xpath</span></span><br><span class="line">s.xpath(<span class="string">'//book[price&gt;29]'</span>)</span><br></pre></td></tr></table></figure>
-<p>使用xpath查找子节点，父节点，后代，先辈，以及内容属性</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">r = requests.get(<span class="string">'http://www.hao123.com'</span>)</span><br><span class="line"><span class="comment"># create selector to contor content of the html request before</span></span><br><span class="line">selector = etree.HTML(r.text)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查找monkey="mingzhan-zfsitebar"的div的子节点a标签的href属性值</span></span><br><span class="line">dom.xpath(<span class="string">'//div[@monkey="mingzhan-zfsitebar"]/a/@href'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 取出所有的a节点</span></span><br><span class="line"><span class="keyword">for</span> a <span class="keyword">in</span> dom.xpath(<span class="string">'//div[@monkey="mingzhan-zfsitebar"]/a'</span>):</span><br><span class="line">    print(a.xpath(<span class="string">'./text()'</span>)[<span class="number">0</span>], a.xpath(<span class="string">'./@href'</span>)[<span class="number">0</span>])</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 取第一个链接</span></span><br><span class="line">dom.xpath(<span class="string">'//div[@monkey="mingzhan-zfsitebar"]/a[1]/@href'</span>)</span><br><span class="line"><span class="comment"># 取最后一个链接</span></span><br><span class="line">dom.xpath(<span class="string">'//div[@monkey="mingzhan-zfsitebar"]/a[last()]/@href'</span>)</span><br><span class="line"><span class="comment"># 取前3个链接</span></span><br><span class="line">dom.xpath(<span class="string">'//div[@monkey="mingzhan-zfsitebar"]/a[position()&lt;4]/@href'</span>)</span><br></pre></td></tr></table></figure>
-
+                    <div class="read-more">
+                        <a href="/2019/07/17/AntXpathBS/" class="read-more-link">
+                            阅读全文
+                            <i class="iconfont icon-readmore"></i>
+                        </a>
+                    </div>
                 
             </div>
         </article>
